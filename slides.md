@@ -23,9 +23,9 @@ drawings:
 css: unocss
 ---
 
-# NX monorepo
+# Nx monorepo
 
-Using NX in real life
+Using Nx in real life
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
@@ -43,33 +43,21 @@ Using NX in real life
   </a>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
 ---
 
-# What is Slidev?
+# Who am i?
+<br/>
+I am Paul
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+- 👨🏻‍💻 **Developer** - for over 10 years
+- 🚀 **Javascript enthusiast**
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
+<br/>
 
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+**Social**
+- **<carbon-logo-github />** https://github.com/Paul-Isache/
+- **<carbon-logo-twitter />** https://twitter.com/paul_isache
+- **<carbon-logo-medium />** https://medium.com/@paulisache
 
 <style>
 h1 {
@@ -83,32 +71,51 @@ h1 {
 }
 </style>
 
-<!--
-Here is another comment.
--->
+---
+
+# What is Nx?
+
+Nx is a smart, fast and extensible build system with first class monorepo support and powerful integrations.
+[learn more](https://nx.dev)
+
+<br/>
+<div v-click="1">
+  <h1> What is a monorepo 🤯? </h1>
+  A monorepo is a single repository containing multiple distinct projects, with well-defined relationships.
+  <br/><br/>
+</div>
+<div v-click="2">
+  <img
+    v-motion
+    src="components/mono.png"
+  />
+</div>
+
+---
+layout: image-right
+image: components/comparison.png
+class: comparison
+---
+
+# Is this the only tool 🤔?
+<br/><br/><br/><br/>
+<div v-click="1">
+   <h3> no 🙈 </h3>
+</div>
+<div v-click="2" >
+  There are other tools similar but Nx is the the one that I found to have move features in one tool
+  You can check the other tool comparison on https://monorepo.tools.
+</div>
 
 ---
 
-# Navigation
+# Benefits
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
-
-### Keyboard Shortcuts
-
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+- 👀 easier visibility between services
+- 🗣 code sharing, reduce duplication
+- 📚 code standardization. one config to rule them all
+- 👨🏻‍💻 depency update made easier, as the package json is in root and the package will reference that version
+- 👻 improve collaboration, easier to design and maintain
 
 ---
 layout: image-right
