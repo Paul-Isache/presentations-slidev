@@ -107,29 +107,38 @@ layout: image-right
 image: https://images.unsplash.com/photo-1543285198-3af15c4592ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2748&q=80
 ---
 
-# Cool feature 
+# Build affected only
+
+
+---
+layout: image-right
+image: https://images.unsplash.com/photo-1543285198-3af15c4592ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2748&q=80
+---
+
+# Workspace generator feature 
 
 The Nx workspace generators help you create the folder and file boilerplate
 ```bash {all|2|8-19|all} {monaco}
 # nx workspace-generator <gen_name> <service_name>
-nx workspace-generator testgenerator testmock
+nx workspace-generator testgenerator first_service
 
 >  NX  Generating /Users/pauli/Documents/
 presentations/nx/demo/dist/out-tsc/tools/
 generators/workspace-generators.json:
 testgenerator
 
-CREATE packages/testmock/README.md
-CREATE packages/testmock/.babelrc
-CREATE packages/testmock/src/index.ts
-CREATE packages/testmock/src/lib/testmock.spec.ts
-CREATE packages/testmock/src/lib/testmock.ts
-CREATE packages/testmock/tsconfig.json
-CREATE packages/testmock/tsconfig.lib.json
-CREATE packages/testmock/project.json
-CREATE packages/testmock/.eslintrc.json
-CREATE packages/testmock/jest.config.ts
-CREATE packages/testmock/tsconfig.spec.json
+CREATE packages/first_service/README.md
+CREATE packages/first_service/.babelrc
+CREATE packages/first_service/src/index.ts
+CREATE packages/first_service/src/lib/testmock
+.spec.ts
+CREATE packages/first_service/src/lib/testmock.ts
+CREATE packages/first_service/tsconfig.json
+CREATE packages/first_service/tsconfig.lib.json
+CREATE packages/first_service/project.json
+CREATE packages/first_service/.eslintrc.json
+CREATE packages/first_service/jest.config.ts
+CREATE packages/first_service/tsconfig.spec.json
 ```
 <!-- 
 <arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" /> -->

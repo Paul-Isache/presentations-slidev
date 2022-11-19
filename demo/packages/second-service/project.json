@@ -1,21 +1,21 @@
 {
-  "name": "first_service",
+  "name": "second-service",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/first_service/src",
+  "sourceRoot": "packages/second-service/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/first_service/**/*.ts"]
+        "lintFilePatterns": ["packages/second-service/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "packages/first_service/jest.config.ts",
+        "jestConfig": "packages/second-service/jest.config.ts",
         "passWithNoTests": true
       }
     }
