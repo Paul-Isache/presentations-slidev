@@ -83,12 +83,14 @@ class: comparison
 ---
 
 # Is this the only tool 🤔?
-<br/><br/><br/><br/>
+<br/><br/><br/>
 <div v-click="1">
    <h3> No 🙈 </h3>
 </div>
+<br/>
 <div v-click="2" >
-  There are other tools similar but Nx is the the one that I found to have move features in one tool
+  There are other tools similar but, Nx seems to be the one that has most the most features.
+  <br/><br/>
   You can check the other tool comparison on https://monorepo.tools.
 </div>
 
@@ -103,22 +105,32 @@ class: comparison
 - 👻 improve collaboration, easier to design and maintain
 
 ---
+layout: two-cols
+---
+
+# Affected files 
+<br/><br/><br/><br/>
+<div>
+  <ul>
+    <li>Nx detectes affeted files </li>
+    <li>will execute according task (build, lint or test) against that package</li>
+    <li>will cache certain tasks, has a hashing system </li>
+  </ul>
+</div>
+
+::right::
+
+<div flex flex-col h-full basis-full justify-center>
+  <img  src="components/affected.png"/>
+</div>
+---
 layout: image-right
 image: https://images.unsplash.com/photo-1543285198-3af15c4592ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2748&q=80
 ---
 
-# Build affected only
+# Workspace generator 
 
-
----
-layout: image-right
-image: https://images.unsplash.com/photo-1543285198-3af15c4592ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2748&q=80
----
-
-# Workspace generator feature 
-
-The Nx workspace generators help you create the folder and file boilerplate
-```bash {all|2|8-19|all} {monaco}
+```bash {all|2|8-19|all} 
 # nx workspace-generator <gen_name> <service_name>
 nx workspace-generator testgenerator first_service
 
@@ -153,13 +165,29 @@ code {
 layout: two-cols
 ---
 
-# Results
+# Result
 
-So what does that do? 
 
 ::right::
 
 <img h-lg block src="components/structure.png" height="400px"/>
+
+
+---
+
+# Downsides
+
+- build and release pipelines will get a bit more complex
+- depending on the team experience there might be an accomodation period
+- git tags and a good branching strategy will be required to be in place
+
+---
+
+# Real life impressions
+
+- reduce confusions what goes where
+- easy spin-up of a a new service or package
+-  
 
 ---
 layout: center
