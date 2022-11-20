@@ -96,7 +96,7 @@ class: comparison
 
 ---
 
-# Benefits
+# Monorepo benefits
 <br/><br/><br/><br/>
 - 👀 improve visibility between services
 - 🗣 code sharing, reduce duplication
@@ -123,6 +123,7 @@ layout: two-cols
 <div flex flex-col h-full basis-full justify-center>
   <img  src="components/affected.png"/>
 </div>
+
 ---
 layout: image-right
 image: https://images.unsplash.com/photo-1543285198-3af15c4592ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2748&q=80
@@ -165,29 +166,35 @@ code {
 layout: two-cols
 ---
 
-# Result
+<div flex flex-col h-full basis-full justify-center>
+  <h1>Result </h1>
+</div>
+
 
 
 ::right::
 
 <img h-lg block src="components/structure.png" height="400px"/>
 
-
 ---
 
-# Downsides
+# Downsides of using monorepos
 
-- build and release pipelines will get a bit more complex
-- depending on the team experience there might be an accomodation period
-- git tags and a good branching strategy will be required to be in place
+- build and release pipelines will get a bit more complex, as you only want to get the affected packages in the build and the release will need to pick only those, ideally 
+- depending on the team experience there might be a small accomodation period
+- without proper tooling, simple tasks will be more complicated
+
+<br/><br/>
+
+<img src="components/dependency-hell.png"/>
 
 ---
 
 # Real life impressions
 
-- reduce confusions what goes where
-- easy spin-up of a a new service or package
--  
+- 🤔 reduce confusions what goes where
+- 🏎 fast & easy spin-up of a a new service/package
+- 👻 if not the team does not follow a/the gitflow versioning and patching of previous versions will be a nightmare
 
 ---
 layout: center
