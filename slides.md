@@ -12,7 +12,7 @@ highlighter: shiki
 lineNumbers: false
 # some information about the slides, markdown enabled
 info: |
-  ## Nx monorepo
+  ## Nx for your monorepo
 # persist drawings in exports and build
 drawings:
   persist: false
@@ -20,7 +20,7 @@ drawings:
 css: unocss
 ---
 
-# Nx monorepo
+# Nx for your monorepo
 
 Using Nx in real life
 
@@ -42,10 +42,10 @@ Using Nx in real life
 
 ---
 
-- 👨🏻‍💻 **Developer** - for over 10 years
+- 👨🏻‍💻 **Developer** - for around 10 years
 - 🚀 **Javascript enthusiast**. JS everywhere
 - Jumped into Full Stack Javascript development, back when NodeJS was at version 0.8
-- Fastify JS fanboy
+
 
 <br/><br/><br/><br/><br/>
 
@@ -60,7 +60,7 @@ Using Nx in real life
 
 <div v-click="1">
   Nx is a smart, fast and extensible build system with first class monorepo support and powerful integrations.
-  [learn more](https://nx.dev)
+  (https://nx.dev)
 </div>
 
 <br/>
@@ -72,13 +72,13 @@ Using Nx in real life
 <div v-click="3">
   <img
     v-motion
-    src="components/mono.png"
+    src="/components/mono.png"
   />
 </div>
 
 ---
 layout: image-right
-image: components/comparison.png
+image: /components/comparison.png
 class: comparison
 ---
 
@@ -101,28 +101,32 @@ class: comparison
 - 👀 improve visibility between services
 - 🗣 code sharing, reduce duplication
 - 📚 code standardization. one config to rule them all
-- 👨🏻‍💻 depency update made easier, as the package json is in root and the package will reference that version
-- 👻 improve collaboration, easier to design and maintain
+- 👨🏻‍💻 depency update made easier, as the package json is in root and your package/app will reference that version
+- 👻 improve collaboration, improve system design and maintainability
 
 ---
 layout: two-cols
 ---
 
-# Affected files 
+# Affected files only
 <br/><br/><br/><br/>
 <div>
   <ul>
-    <li>Nx detectes affeted files </li>
-    <li>will execute according task (build, lint or test) against that package</li>
-    <li>will cache certain tasks, has a hashing system </li>
+    <li>Nx detectes affected files </li>
+    <li>will execute the according task (build, lint or test) against that package/app</li>
+    <li>will cache certain tasks, Nx has a hashing system </li>
   </ul>
 </div>
 
 ::right::
 
 <div flex flex-col h-full basis-full justify-center>
-  <img  src="components/affected.png"/>
+  <img  src="/components/affected.png"/>
 </div>
+
+<!--
+to determine what files where changed in order to execute the according task
+-->
 
 ---
 layout: image-right
@@ -174,31 +178,56 @@ layout: two-cols
 
 ::right::
 
-<img h-lg block src="components/structure.png" height="400px"/>
+<img h-lg block src="/components/structure.png" height="400px"/>
 
 ---
 
 # Downsides of using monorepos
 
-- build and release pipelines will get a bit more complex, as you only want to get the affected packages in the build and the release will need to pick only those, ideally 
+- build and release pipelines will get a bit more complex
 - depending on the team experience there might be a small accomodation period
 - without proper tooling, simple tasks will be more complicated
+- quick initial setup can cause issue down the line, so do your research first to check what tool suits your situation 🪛🔨
 
 <br/><br/>
 
-<img src="components/dependency-hell.png"/>
+<img src="/components/dependency-hell.png"/>
 
+<!--
+-  as you only want to get the affected packages in the build and the release will need to pick only those, ideally 
+- ops is anonymise package name and the blacked out pieces where the package names
+-->
+
+---
+layout: center
 ---
 
 # Real life impressions
 
 - 🤔 reduce confusions what goes where
-- 🏎 fast & easy spin-up of a a new service/package
-- 👻 if not the team does not follow a/the gitflow versioning and patching of previous versions will be a nightmare
+- 🏎 fast & easy spin-up of a a new package/app
+- 👻 if the team does not follow a/the gitflow, patching of previous versions will become a nightmare
+
+<!--
+- example: now you are on v4.0.0 and you need to patch v3.2.0
+-->
+
+---
+layout: center
+---
+
+## My use-cases
+- I used Nx within a monorepo hosting Azure Functions Apps, common library repo and microfrontends package
+    - it was easy for new people in the team to understand what were our services and how they communicate
+    - automated creation ,using the workspace generator, added all the required fields to update the deploy and build pipelines.
+
+<!--
+- hosting multiple functions inside each Function App
+- reducing the devops efforts
+-->
 
 ---
 layout: center
 class: text-center
 ---
-
 # Q&A
