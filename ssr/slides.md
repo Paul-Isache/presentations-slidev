@@ -26,7 +26,7 @@ transition: slide-left
 css: unocss
 ---
 
-# Server or Client Side Rendering 
+# Rendering on the web 
 
 <!-- Presentation slides for developers -->
 
@@ -47,32 +47,38 @@ css: unocss
 transition: fade-out
 ---
 
-# What is server side rendering?
+# Rendering types
 
-Server-side rendering (SSR), is the ability of an application to contribute by displaying the web-page on the server instead of rendering it in the browser. Server-side sends a fully rendered page to the client; the client’s JavaScript bundle takes over and allows the singla page application framework to operate. There is also client-side rendering which slows down the procedure of viewing and interacting with the web page.
+<div>
+  <h3 v-click="1">CSR - server side rendering</h3>
+  <p v-click="3">
+    Client-side rendering (CSR) means rendering pages directly in the browser using JavaScript. All logic, data fetching, templating and routing are handled on the client rather than the server.
+  </p>
+</div>
 
-<br>
-<br>
+<div>
+  <h3 v-click="2">SSR - server side rendering</h3>
+  <p v-click="4">
+    Server rendering generates the full HTML for a page on the server in response to navigation. This avoids additional round-trips for data fetching and templating on the client, since it’s handled before the browser gets a response.
+  </p>
+</div>
 
-<div class="abs-bl m-6 flex gap-2">
+<div class="m-25"  v-click="5">
+ <p class="emoji">🤔</p>
+</div>
+
+<div class="abs-br m-6 flex gap-2">
   <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
     class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon-logo-twitter /> paul_isache
   </a>
 </div>
 
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
-
 <style>
+  .emoji {
+    font-size: 72px;
+  }
 </style>
-
-<!--
-Here is another comment.
--->
 
 ---
 transition: slide-up
@@ -80,34 +86,163 @@ transition: slide-up
 
 # How client side rendering works
 
-```mermaid {scale: 0.6}
+```mermaid {scale: 0.52}
 sequenceDiagram
   user->>browser: https://apollo.criver.com
   browser->>web_server: load content
   web_server->>browser: load content
-  browser->>user: render content
+  Note left of browser: render content
   user->>browser: interaction on dashboard
   browser->>web_server: get dashboard data
-  web_server-->>backend: get dashboard data
-  backend-->>database: get dashboard data
-  database-->>backend: return dashboard data
-  backend-->>web_server: return dashboard data
+  web_server-->>database: get dashboard data
+  database-->>web_server: return dashboard data
+  Note left of browser: render content
   web_server->>browser: return dashboard data
 ```
 
-
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+    <carbon-logo-twitter /> paul_isache
+  </a>
+</div>
 
 ---
 transition: slide-right
 ---
 
-# SSR disavantages
+# How server side rendering works
+
+```mermaid {scale: 0.52}
+sequenceDiagram
+  user->>browser: https://apollo.criver.com
+  browser->>web_server: load content
+  web_server-->>database: get dashboard data
+  database-->>web_server: return dashboard data
+  web_server->>browser: load content
+  Note left of browser: render content
+```
+
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+    <carbon-logo-twitter /> paul_isache
+  </a>
+</div>
+
+
+---
+transition: slide-right
+layout: 'cover'
+background: 'src/images/confused.jpeg'
+background-size: '100%'
+# apply any windi css classes to the current slide
+class: 'text-center'
+---
+
+# How does it really work 🤷🏻‍♂️
+
+<div class="abs-bl m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+    Genereated using https://deepai.org/
+  </a>
+</div>
+
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+    <carbon-logo-twitter /> paul_isache
+  </a>
+</div>
+
+
+---
+transition: slide-up
+---
+
+# Showcase
+
+<div flex flex-row h-full basis-full justify-center justify-between>
+  <div>
+    <img h-75 src='src/images/csr.png'>
+  </div>
+
+  <div>
+    <img h-75 src='src/images/ssr.png'>
+  </div>
+</div>
+
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+    <carbon-logo-twitter /> paul_isache
+  </a>
+</div>
+
+
+---
+transition: slide-up
+---
+
+# Key factors
+
+- TTFB: time to first byte 
+- FP: first paint - CSR/SSR
+- FCP: first contentful paint - CSR/SSR
+- TTI: time to interactive - CSR/SSR
+
+---
+transition: slide-up
+---
+
+# Advantage disavantages
 
 - Server-side rendering seems to be a simple concept; however, its complexity increases as the complexity of the application increases.
 - Rendering a big application on the server-side can be very time consuming and it may increase the loading time due to it being a single bottleneck.
 
-### Keyboard Shortcuts
 
+---
+transition: slide-up
+---
+
+# Combining client and server side rendering
+
+- Server-side rendering seems to be a simple concept; however, its complexity increases as the complexity of the application increases.
+- Rendering a big application on the server-side can be very time consuming and it may increase the loading time due to it being a single bottleneck.
+
+
+---
+transition: slide-up
+---
+
+# rehydration pun
+
+
+---
+transition: slide-up
+---
+
+# what is rehydration and how it works
+
+
+
+---
+transition: slide-up
+---
+
+# best use scanerarios
+when to
+how to
+frameworks
+
+
+---
+transition: slide-up
+---
+# QA
+
+### Keyboard Shortcuts
 |     |     |
 | --- | --- |
 | <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
@@ -122,295 +257,3 @@ transition: slide-right
   src="https://sli.dev/assets/arrow-bottom-left.svg"
 />
 <p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
-
-# Code
-
-Use code snippets and get the highlighting directly![^1]
-
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
-
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = { ...user, ...update }
-  saveUser(id, newUser)
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.5}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
----
-src: ./pages/multiple-entries.md
-hide: false
----
-
----
-layout: center
-class: text-center
----
-
-# Learn More
-
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
