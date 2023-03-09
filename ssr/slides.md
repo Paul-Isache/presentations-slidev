@@ -21,7 +21,7 @@ drawings:
   persist: false
 
 # page transition
-transition: slide-left
+transition: slide-up
 # use UnoCSS
 css: unocss
 ---
@@ -44,10 +44,10 @@ css: unocss
 </div>
 
 ---
-transition: fade-out
+transition: slide-up
 ---
 
-# Small presenter intro
+# A few things about me
 
 - developer for over a decade
 - focused on JavaScript and cloud architecture
@@ -69,7 +69,7 @@ transition: fade-out
 </div>
 
 ---
-transition: fade-out
+transition: slide-up
 ---
 
 # Rendering types
@@ -105,59 +105,9 @@ transition: fade-out
   }
 </style>
 
+
 ---
 transition: slide-up
----
-
-# How client side rendering works
-
-```mermaid {scale: 0.52}
-sequenceDiagram
-  user->>browser: https://apollo.criver.com
-  browser->>web_server: load content
-  web_server->>browser: load content
-  Note left of browser: render content
-  user->>browser: interaction on dashboard
-  browser->>web_server: get dashboard data
-  web_server-->>database: get dashboard data
-  database-->>web_server: return dashboard data
-  Note left of browser: render content
-  web_server->>browser: return dashboard data
-```
-
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
-    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
-     <carbon-logo-twitter /> @paul_isache
-  </a>
-</div>
-
----
-transition: slide-right
----
-
-# How server side rendering works
-
-```mermaid {scale: 0.52}
-sequenceDiagram
-  user->>browser: https://apollo.criver.com
-  browser->>web_server: load content
-  web_server-->>database: get dashboard data
-  database-->>web_server: return dashboard data
-  web_server->>browser: load content
-  Note left of browser: render content
-```
-
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
-    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
-     <carbon-logo-twitter /> @paul_isache
-  </a>
-</div>
-
-
----
-transition: slide-right
 layout: 'cover'
 background: 'src/images/confused.jpeg'
 background-size: '100%'
@@ -274,7 +224,7 @@ transition: slide-up
 
 
 ---
-transition: slide-right
+transition: slide-up
 layout: 'cover'
 background: 'src/images/gremlin.png'
 background-size: '100%'
@@ -327,7 +277,7 @@ layout: 'cover'
 
 
 ---
-transition: slide-right
+transition: slide-up
 layout: 'cover'
 background: 'src/images/rehydration.jpg'
 background-size: '100%'
@@ -359,7 +309,7 @@ transition: slide-up
 
 
 ---
-transition: slide-right
+transition: slide-up
 background: 'src/images/q&a.jpeg'
 layout: 'cover'
 background-size: '100%'
