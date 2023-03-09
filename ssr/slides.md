@@ -56,6 +56,7 @@ transition: slide-up
 -  <carbon-logo-twitter /> @paul_isache
 -  <carbon-logo-github /> Paul-Isache
 
+- slides link: https://github.com/Paul-Isache/presentations-slidev
 
 <div class="abs-tr m-26 flex gap-2">
   <img class="inline-block h-40 w-40 rounded-full ring-2 ring-white" src="src/images/author.JPG" alt=""/>
@@ -75,7 +76,7 @@ transition: slide-up
 # Rendering types
 
 <div>
-  <h3 v-click="1">CSR - server side rendering</h3>
+  <h3 v-click="1">CSR - client side rendering</h3>
   <p v-click="3">
     Client-side rendering (CSR) means rendering pages directly in the browser using JavaScript. All logic, data fetching, templating and routing are handled on the client rather than the server.
   </p>
