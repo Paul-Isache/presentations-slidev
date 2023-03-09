@@ -284,7 +284,7 @@ background-size: '100%'
 class: 'text-center'
 ---
 
-# rehydration
+# rehydration 😱
 
 <div class="abs-br m-6 flex gap-2">
   <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
@@ -307,6 +307,22 @@ transition: slide-up
   <p>Rehydration is often used in conjunction with SSR frameworks such as React, Next.js, Remix or Gatsby</p>
 </div >
 
+
+---
+transition: slide-up
+layout: 'cover'
+background: 'src/images/rehydration.jpg'
+background-size: '100%'
+class: 'text-center'
+---
+
+<div>
+  <a href="https://github.com/nearform/the-fastify-ssr-workshop/tree/feat/walkthrought" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+     <carbon-logo-github /> GitHub example
+  </a> <br/>
+  https://github.com/nearform/the-fastify-ssr-workshop/tree/feat/walkthrought
+</div>
 
 ---
 transition: slide-up
