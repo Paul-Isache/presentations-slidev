@@ -43,32 +43,7 @@ css: unocss
   </a>
 </div>
 
----
-transition: slide-up
----
-
-# A few things about me
-
-- developer for over a decade
-- focused on JavaScript and cloud architecture
-- working with NodeJS since version 0.14
-
--  <carbon-logo-twitter /> @paul_isache
--  <carbon-logo-github /> Paul-Isache
-
-- slides link: https://github.com/Paul-Isache/presentations-slidev
-
-<div class="abs-tr m-26 flex gap-2">
-  <img class="inline-block h-40 w-40 rounded-full ring-2 ring-white" src="src/images/author.JPG" alt=""/>
-</div>
- 
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
-    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
-     <carbon-logo-twitter /> @paul_isache
-  </a>
-</div>
-
+c
 ---
 transition: slide-up
 ---
@@ -451,6 +426,21 @@ class: 'text-center'
   https://github.com/nearform/the-fastify-ssr-workshop/tree/feat/walkthrought
 </div>
 
+
+---
+transition: slide-up
+---
+
+# Wrap-up
+
+- SSR is faster on the FP and FCP 
+
+- you don't expose data which is not needed
+
+- translations can be rendered on the server, so files are not on the client
+
+<h2 v-click='1'>Is it worth it?</h2>
+<p v-click='2'>Yes, from my point of view. but do your research first </p>
 
 ---
 transition: slide-up
