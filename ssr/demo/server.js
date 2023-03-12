@@ -27,7 +27,7 @@ app.get('/data', (_, reply) => {
 
 app.post('/add', (req, reply) => {
   todoList.push(req.body.item)
-  reply.send(0)
+  reply.send(true)
 })
 
 await app.listen(3000)

@@ -77,19 +77,26 @@ transition: slide-up
 
 <div>
   <h3 v-click="1">CSR - client side rendering</h3>
-  <p v-click="3">
+  <p v-click="4">
     Client-side rendering (CSR) means rendering pages directly in the browser using JavaScript. All logic, data fetching, templating and routing are handled on the client rather than the server.
   </p>
 </div>
 
 <div>
   <h3 v-click="2">SSR - server side rendering</h3>
-  <p v-click="4">
+  <p v-click="5">
     Server rendering generates the full HTML for a page on the server in response to navigation. This avoids additional round-trips for data fetching and templating on the client, since it’s handled before the browser gets a response.
   </p>
 </div>
 
-<div class="m-25"  v-click="5">
+<div>
+  <h3 v-click="3">Static rendering</h3>
+  <p v-click="6">
+    Static rendering means producing a separate HTML file for each URL ahead of time.
+  </p>
+</div>
+
+<div class="m-10"  v-click="7">
  <p class="emoji">🤔</p>
 </div>
 
@@ -106,6 +113,24 @@ transition: slide-up
   }
 </style>
 
+
+---
+transition: slide-up
+---
+
+# Terminology
+
+- TTFB: time to first byte - measures the time it takes for the network to respond to a user request with the first byte of a resource
+- FP: first paint - is the time between navigation and when the browser first renders pixels to the screen, rendering anything that is visually different from the default background color of the body
+- FCP: first contentful paint - measures the time from when the page starts loading to when any part of the page's content is rendered on the screen
+- TTI: time to interactive - measures the time from when the page starts loading to when it's visually rendered, its initial scripts (if any) have loaded, and it's capable of reliably responding to user input quickly
+
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+     <carbon-logo-twitter /> @paul_isache
+  </a>
+</div>
 
 ---
 transition: slide-up
@@ -137,24 +162,6 @@ class: 'text-center'
 transition: slide-up
 ---
 
-# Some useful acronyms
-
-- TTFB: time to first byte - measures the time it takes for the network to respond to a user request with the first byte of a resource
-- FP: first paint - is the time between navigation and when the browser first renders pixels to the screen, rendering anything that is visually different from the default background color of the body
-- FCP: first contentful paint - measures the time from when the page starts loading to when any part of the page's content is rendered on the screen
-- TTI: time to interactive - measures the time from when the page starts loading to when it's visually rendered, its initial scripts (if any) have loaded, and it's capable of reliably responding to user input quickly
-
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
-    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
-     <carbon-logo-twitter /> @paul_isache
-  </a>
-</div>
-
----
-transition: slide-up
----
-
 # CSR web perfomance
 <div flex flex-row h-full basis-full justify-center justify-between>
   <div >
@@ -162,7 +169,7 @@ transition: slide-up
    
   </div>
 
-  <div w-100>
+  <div w-100 v-click="1">
      <img src='src/images/csr-tti.jpg'>
      <div>
       <ul>
@@ -184,12 +191,29 @@ transition: slide-up
 transition: slide-up
 ---
 
+# CSR dis/advantage
+
+- Cheap and easy to host.  You can simply host your application on any CDN or static file host like Amazon S3
+
+- Poor SEO 
+
+- Reduced compatiblity issues, as it does not extensively rely on the client-sid JavaScript libraries
+
+-  Poor user experience on slower devices. Leaving rendering to the client-side can add seconds of load time on slower laptops and mobile devices
+
+- Slower load time as they need to make an additional round-trip to API .
+
+
+---
+transition: slide-up
+---
+
 # SSR web performance
 <div flex flex-row h-full basis-full justify-center justify-between>
   <div >
     <img h-75 src='src/images/ssr.png'>
   </div>
-  <div w-100>
+  <div w-100 v-click="1">
      <img h-40 src='src/images/ssr-tti.jpg'>
      <div>
       <ul>
@@ -215,7 +239,7 @@ transition: slide-up
 
 - Server rendering generally produces a fast First Paint (FP) and First Contentful Paint (FCP). Running page logic and rendering on the server makes it possible to avoid sending lots of JavaScript to the client, which helps achieve a fast Time to Interactive (TTI). Good browser optimizations like streaming document parsing.
 
-- Good for SEO 
+- Good SEO 
 
 - Reduced compatiblity issues, as it does not extensively rely on the client-sid JavaScript libraries
 
@@ -295,12 +319,11 @@ class: 'text-center'
 </div>
 
 
-
 ---
 transition: slide-up
 ---
 
-# What is rehydration?
+# What is re/hydration?
 
 <div>
   <p>Rehydration is the attaching event handlers and data to the HTML generated by SSR on the client-side.</p>
@@ -308,6 +331,109 @@ transition: slide-up
   <p>Rehydration is often used in conjunction with SSR frameworks such as React, Next.js, Remix or Gatsby</p>
 </div >
 
+---
+layout: two-cols
+transition: slide-up
+---
+
+# Data rehydration
+
+```javascript {all|3-4|5|6-7|9|15|16|all} 
+if (isClient && isFirstRender) {
+  isFirstRender = false
+  const element = document.getElementById('hydration')
+  const data = element.dataset.fromserver
+   if (!data) {
+    fetch('/data').then(r => r.json())
+      .then((json) => { window.todoList = json })
+  } else {
+    window.todoList = JSON.parse(data)
+  }
+
+  return
+}
+
+const appendedData = `data-fromServer='${JSON.stringify(todoList)}'`
+let html = `<ul id="hydration" ${appendedData}>`
+
+for (const item of todoList) {
+  html += `<li>${item}</li>`
+}
+
+html += '</ul><input>'
+html += '<button>Add</button>'
+document.body.innerHTML = html
+```
+
+::right::
+
+<div m-12>
+  <ul>
+    <li>check it scriot is executed on the client</li>
+    <li>parse response event</li>
+    <li>append new item to list</li>
+  </ul>
+</div>
+
+
+---
+layout: two-cols
+transition: slide-up
+---
+
+# Listening on event
+
+```javascript {all|4-10|14|15|16|17-18|all} 
+document.querySelector('button')
+  .addEventListener('click', async () => {
+    const item = document.querySelector('input').value
+    const response = await fetch('/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ item })
+    })
+    const status = await response.json()
+
+    if (status) {
+      window.todoList.push(item)
+      const ul = document.getElementById('hydration')
+      const li = document.createElement("li")
+      li.appendChild(document.createTextNode(item))
+      ul.appendChild(li)
+      document.querySelector('input').value = ''
+    }
+  })
+```
+
+::right::
+
+<div m-12>
+  <ul>
+    <li>attach event listener to button</li>
+    <li>parse response event</li>
+    <li>append new item to list</li>
+  </ul>
+</div>
+
+
+---
+transition: slide-up
+layout: 'cover'
+background: https://images.unsplash.com/photo-1543285198-3af15c4592ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2748&q=80
+background-size: '100%'
+class: 'text-center'
+---
+
+# demo 🧑🏻‍💻
+
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+     <carbon-logo-twitter /> @paul_isache
+  </a>
+</div>
 
 ---
 transition: slide-up
@@ -324,6 +450,7 @@ class: 'text-center'
   </a> <br/>
   https://github.com/nearform/the-fastify-ssr-workshop/tree/feat/walkthrought
 </div>
+
 
 ---
 transition: slide-up
