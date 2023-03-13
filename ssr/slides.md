@@ -47,6 +47,32 @@ css: unocss
 transition: slide-up
 ---
 
+# A few things about me
+
+- developer for over a decade
+- focused on JavaScript and cloud architecture
+- working with NodeJS since version 0.14
+
+-  <carbon-logo-twitter /> @paul_isache
+-  <carbon-logo-github /> Paul-Isache
+
+- slides link: https://github.com/Paul-Isache/presentations-slidev
+
+<div class="abs-tr m-26 flex gap-2">
+  <img class="inline-block h-40 w-40 rounded-full ring-2 ring-white" src="src/images/author.JPG" alt=""/>
+</div>
+
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+     <carbon-logo-twitter /> @paul_isache
+  </a>
+</div>
+
+---
+transition: slide-up
+---
+
 # Rendering types
 
 <div>
@@ -148,7 +174,6 @@ transition: slide-up
      <div>
       <ul>
        <li>slow TTI due to the load of JavaScript bundle</li>
-       <li>code splitting and lazy load can reduce the TTI</li>
       </ul>
      </div>
   </div>
@@ -173,9 +198,11 @@ transition: slide-up
 
 - Reduced compatiblity issues, as it does not extensively rely on the client-sid JavaScript libraries
 
--  Poor user experience on slower devices. Leaving rendering to the client-side can add seconds of load time on slower laptops and mobile devices
+- code splitting and lazy load can reduce the TTI
 
-- Slower load time as they need to make an additional round-trip to API .
+- Poor user experience on slower devices. Leaving rendering to the client-side can add seconds of load time on slower laptops and mobile devices
+
+- Slower load time as they need to make an additional round-trip to API.
 
 
 ---
@@ -439,18 +466,17 @@ class: 'text-center'
 ---
 
 <div>
-  <a href="https://github.com/nearform/the-fastify-ssr-workshop/tree/feat/walkthrought" target="_blank" alt="GitHub"
+  <a href="https://github.com/nearform/react-ssr-fastify-vite" target="_blank" alt="GitHub"
     class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
-     <carbon-logo-github /> GitHub example
+     <carbon-logo-github /> GitHub example using React and fastify-vite
   </a> <br/>
-  https://github.com/nearform/the-fastify-ssr-workshop/tree/feat/walkthrought
+  https://github.com/nearform/react-ssr-fastify-vite
 </div>
 
 
 ---
 transition: slide-up
 ---
-
 # Wrap-up
 
 - SSR is faster on the FP and FCP 
@@ -461,6 +487,27 @@ transition: slide-up
 
 <h2 v-click='1'>Is it worth it?</h2>
 <p v-click='2'>Yes, from my point of view. but do your research first </p>
+
+---
+transition: slide-up
+layout: 'cover'
+background: 'src/images/worth-it.jpeg'
+background-size: '100%'
+class: 'text-center'
+---
+# Is it worth it?
+
+<div>
+  
+  <p v-click='1'>Yes, from my point of view.</p>
+</div>
+
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+     <carbon-logo-twitter /> @paul_isache
+  </a>
+</div>
 
 ---
 transition: slide-up
