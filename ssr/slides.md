@@ -120,10 +120,34 @@ transition: slide-up
 
 # Terminology
 
-- TTFB: time to first byte - measures the time it takes for the network to respond to a user request with the first byte of a resource
 - FP: first paint - is the time between navigation and when the browser first renders pixels to the screen, rendering anything that is visually different from the default background color of the body
 - FCP: first contentful paint - measures the time from when the page starts loading to when any part of the page's content is rendered on the screen
 - TTI: time to interactive - measures the time from when the page starts loading to when it's visually rendered, its initial scripts (if any) have loaded, and it's capable of reliably responding to user input quickly
+
+<div>
+ <img h-45 src='src/images/fcp.png'>
+</div>
+
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+     <carbon-logo-twitter /> @paul_isache
+  </a>
+</div>
+
+
+---
+transition: slide-up
+---
+
+# Terminology
+
+- TTFB: time to first byte - measures the time it takes for the network to respond to a user request with the first byte of a resource
+
+<div>
+  <img h-75 src='src/images/ttfb.jpg'>
+</div>
+
 
 <div class="abs-br m-6 flex gap-2">
   <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
@@ -166,7 +190,10 @@ transition: slide-up
 <div flex flex-row h-full basis-full justify-center justify-between>
   <div >
     <img h-75 src='src/images/csr.png'>
-   
+    <a class="text-[8px] slidev-icon-btn opacity-50 !border-none !hover:text-white" href="https://dev.to/codewithtee/server-side-rendering-ssr-vs-client-side-rendering-csr-3m24">
+      Image source
+    </a>
+    
   </div>
 
   <div w-100 v-click="1">
@@ -188,21 +215,31 @@ transition: slide-up
 
 ---
 transition: slide-up
+layout: two-cols
 ---
 
-# CSR dis/advantage
+# CSR 
 
-- Cheap and easy to host.  You can simply host your application on any CDN or static file host like Amazon S3
+## Advantages
+- Cheap and easy to host.  You can simply host your application on any CDN or static file host like Amazon S3 or Azure BlobStorage.
 
-- Poor SEO 
+- Can more easily handle a high volume of simultaneous accesses as hosting on static file host.
 
-- Reduced compatiblity issues, as it does not extensively rely on the client-sid JavaScript libraries
+- Caching is a technique where important, reusable scripts are stored in the client’s browser. 
 
-- code splitting and lazy load can reduce the TTI
 
-- Poor user experience on slower devices. Leaving rendering to the client-side can add seconds of load time on slower laptops and mobile devices
+::right::
 
-- Slower load time as they need to make an additional round-trip to API.
+#  &nbsp;
+## Disadvantages
+
+- Reduced compatiblity issues, as it does not extensively rely on the client-sid JavaScript libraries.
+
+- Poor SEO (search engine optimization).
+
+- Poor user experience on slower devices. Leaving rendering to the client-side can add seconds of load time on slower laptops and mobile devices.
+
+- Slower load time as they need to make an additional round-trip to API. Code splitting and lazy load can reduce the TTI.
 
 
 ---
@@ -213,6 +250,9 @@ transition: slide-up
 <div flex flex-row h-full basis-full justify-center justify-between>
   <div >
     <img h-75 src='src/images/ssr.png'>
+    <a class="text-[8px] slidev-icon-btn opacity-50 !border-none !hover:text-white" href="https://dev.to/codewithtee/server-side-rendering-ssr-vs-client-side-rendering-csr-3m24">
+      Image source
+    </a>
   </div>
   <div w-100 v-click="1">
      <img h-40 src='src/images/ssr-tti.jpg'>
@@ -234,19 +274,31 @@ transition: slide-up
 
 ---
 transition: slide-up
+layout: two-cols
 ---
 
-# SSR dis/advantage
+# SSR
 
-- Server rendering generally produces a fast First Paint (FP) and First Contentful Paint (FCP). Running page logic and rendering on the server makes it possible to avoid sending lots of JavaScript to the client, which helps achieve a fast Time to Interactive (TTI). Good browser optimizations like streaming document parsing.
+## Advantages
+
+- Server rendering generally produces a fast First Paint (FP) and First Contentful Paint (FCP). Running page logic and rendering on the server makes it possible to avoid sending lots of JavaScript to the client, which helps achieve a fast Time to Interactive (TTI).
 
 - Good SEO 
 
-- Reduced compatiblity issues, as it does not extensively rely on the client-sid JavaScript libraries
+- Reduced compatiblity issues, as it does not extensively rely on the client-side JavaScript libraries
 
 - Improved data security. As within the API responses some informations are not rendered within the UI but they are sent as part of the response
 
+
+::right::
+
+#  &nbsp;
+
+## Disadvantages
+
 - Server-side rendering seems to be a simple concept; however, its complexity increases as the complexity of the application increases.
+
+- As it requires servers access, the server should be able to handle high volume or autoscale
 
 
 ---
@@ -288,8 +340,8 @@ layout: 'cover'
 # CSR or SSR 🤔?
 
 <div>
- <h2 v-click="1">Depends on use-case, do your research first 👩‍🔬👨‍🔬</h2>
- <h2 v-click="2">Best ideal case, a combination of both solutions, using rehydration 🤯</h2>
+ <h3 v-click="1">Depends on use-case, timeline and buget 👩‍🔬👨‍🔬</h3>
+ <h3 v-click="2">Best ideal case is a combination of both solutions (universal rendering), using rehydration 🤯</h3>
 </div>
 
 
@@ -310,7 +362,7 @@ background-size: '100%'
 class: 'text-center'
 ---
 
-# rehydration 😱
+### univerasal rendering & rehydration 😱
 
 <div class="abs-br m-6 flex gap-2">
   <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
@@ -329,9 +381,37 @@ transition: slide-up
 <div>
   <p>Rehydration is the attaching event handlers and data to the HTML generated by SSR on the client-side.</p>
   <p>Rehydration ensures that the HTML rendered on the client-side is interactive and behaves as expected. Without rehydration, the client-side JavaScript would have to re-fetch data and re-create event listeners, which would lead to slower page load times and a poor user experience.</p>
-  <p>Rehydration is often used in conjunction with SSR frameworks such as React, Next.js, Remix, Gatsby .... or VanillaJS 🍦</p>
+  <p>Rehydration is often used in conjunction with SSR frameworks such as Next.js, Remix, Gatsby, Angular Universal, Nuxt.js .... or VanillaJS 🍦</p>
 </div >
 
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+     <carbon-logo-twitter /> @paul_isache
+  </a>
+</div>
+
+---
+transition: slide-up
+---
+
+# What is universal rendering?
+
+Universal rendering (composition), Isomorphic JavaScript, SSR essentially refer to the same concept: Having a single code-base that makes it possible to render and update markup on the server and in the browser.
+
+<div class="flex gap-2">
+  <img class="inline-block h-70" src="src/images/uc.png" alt=""/>
+</div>
+<a class="text-[8px] slidev-icon-btn opacity-50 !border-none !hover:text-white" href="https://livebook.manning.com/book/micro-frontends-in-action/chapter-8">
+  Image source: https://livebook.manning.com/book/micro-frontends-in-action
+</a>
+
+<div class="abs-br m-6 flex gap-2">
+  <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
+    class="text-xs slidev-icon-btn opacity-50 !border-none !hover:text-white">
+     <carbon-logo-twitter /> @paul_isache
+  </a>
+</div>
 
 ---
 transition: slide-up
@@ -390,7 +470,7 @@ document.body.innerHTML = html
 
 <div m-12>
   <ul>
-    <li>check it scriot is executed on the client</li>
+    <li>check if the script is executed on the client</li>
     <li>parse response event</li>
     <li>append new item to list</li>
     <li>pass data as part of the data attribute, or as part of window object</li>
@@ -479,14 +559,16 @@ transition: slide-up
 ---
 # Wrap-up
 
-- SSR is faster on the FP and FCP 
+- SSR is faster on the FP and FCP, but it adds some complexity
 
 - you don't expose data which is not needed
 
-- translations can be rendered on the server, so files are not on the client
+- translations can be rendered on the server, so files are not on the client 
 
-<h2 v-click='1'>Is it worth it?</h2>
-<p v-click='2'>Yes, from my point of view. but do your research first </p>
+- it will take longer to setup and atchitect the components and layouts, for a similar setup
+
+- leverage microfronteds to split code and setup different teams
+
 
 ---
 transition: slide-up
@@ -496,11 +578,6 @@ background-size: '100%'
 class: 'text-center'
 ---
 # Is it worth it?
-
-<div>
-  
-  <p v-click='1'>Yes, from my point of view.</p>
-</div>
 
 <div class="abs-br m-6 flex gap-2">
   <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
