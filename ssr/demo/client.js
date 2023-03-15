@@ -2,13 +2,33 @@
 let isClient = typeof window !== 'undefined'
 let isFirstRender = true
 
+const generateHTML = (data) => {
+  let html = `<ul id="hydration" data-fromServer='${JSON.stringify(data)}'>`
+
+  for (const item of data) {
+    html += `<li>${item}</li>`
+  }
+
+  html += '</ul><input>'
+  html += '<button>Add</button>'
+
+  return html
+}
+
 export function render(document, { todoList }) {
   if (isClient && isFirstRender) {
     isFirstRender = false
 
-    if (!document.getElementById('hydration').dataset.fromserver) {
-      fetch('/data').then(r => r.json())
-        .then((json) => { window.todoList = json })
+    if (!document.getElementById('hydration') || !document.getElementById('hydration').dataset.fromserver) {
+      fetch('http://localhost:3000/data').then(r => r.json())
+        .then((json) => {
+          window.todoList = json;
+         
+          setTimeout(() => {
+            document.body.innerHTML = generateHTML(json)
+            addEventListeners()
+          }, 2000)
+        })
     } else {
       window.todoList = JSON.parse(document.getElementById('hydration').dataset.fromserver)
     }
@@ -16,16 +36,7 @@ export function render(document, { todoList }) {
     return
   }
 
-  let html = `<ul id="hydration" data-fromServer='${JSON.stringify(todoList)}'>`
-  
-  for (const item of todoList) {
-    html += `<li>${item}</li>`
-  }
-
-  html += '</ul><input>'
-  html += '<button>Add</button>'
-
-  document.body.innerHTML = html
+  document.body.innerHTML = generateHTML(todoList)
 }
 
 export function addEventListeners() {
@@ -39,7 +50,9 @@ export function addEventListeners() {
         },
         body: JSON.stringify({ item })
       })
+      
       const status = await response.json()
+
       if (status) {
         window.todoList.push(item)
         const ul = document.getElementById('hydration')
