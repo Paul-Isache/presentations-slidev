@@ -107,12 +107,18 @@ transition: slide-up
   </a>
 </div>
 
+
+
 <style>
   .emoji {
     font-size: 72px;
   }
 </style>
 
+<!--
+- rendering is a process used in web development that turns website code into the interactive pages users see when they visit a website
+- static rendering is similar to ssr, but it will serve static content
+-->
 
 ---
 transition: slide-up
@@ -148,6 +154,7 @@ transition: slide-up
   <img h-75 src='src/images/ttfb.jpg'>
 </div>
 
+- SEO - search engine optimisation
 
 <div class="abs-br m-6 flex gap-2">
   <a href="https://twitter.com/paul_isache" target="_blank" alt="GitHub"
@@ -155,6 +162,10 @@ transition: slide-up
      <carbon-logo-twitter /> @paul_isache
   </a>
 </div>
+
+<!--
+- Search engine optimization is the process of improving the quality and quantity of website traffic to a website or a web page from search engines
+-->
 
 ---
 transition: slide-up
@@ -225,7 +236,9 @@ layout: two-cols
 
 - Can more easily handle a high volume of simultaneous accesses as hosting on static file host.
 
-- Caching is a technique where important, reusable scripts are stored in the client’s browser. 
+- Caching important resources,like HTML, CSS or Javascript , reusable scripts are stored in the client’s browser. 
+
+- Ability to work offline by using service workers and progressive web applications.
 
 
 ::right::
@@ -233,7 +246,7 @@ layout: two-cols
 #  &nbsp;
 ## Disadvantages
 
-- Reduced compatiblity issues, as it does not extensively rely on the client-sid JavaScript libraries.
+- Extensively rely on the client-side JavaScript libraries.
 
 - Poor SEO (search engine optimization).
 
@@ -281,11 +294,13 @@ layout: two-cols
 
 ## Advantages
 
-- Server rendering generally produces a fast First Paint (FP) and First Contentful Paint (FCP). Running page logic and rendering on the server makes it possible to avoid sending lots of JavaScript to the client, which helps achieve a fast Time to Interactive (TTI).
+- Server rendering generally produces a fast First Paint (FP) and First Contentful Paint (FCP), which helps achieve a fast Time to Interactive (TTI).
 
 - Good SEO 
 
 - Reduced compatiblity issues, as it does not extensively rely on the client-side JavaScript libraries
+
+- Reduce the application complexity and maintenance when rolling new versions.
 
 - Improved data security. As within the API responses some informations are not rendered within the UI but they are sent as part of the response
 
@@ -296,10 +311,17 @@ layout: two-cols
 
 ## Disadvantages
 
+- Increased architectural complexity
+
 - Server-side rendering seems to be a simple concept; however, its complexity increases as the complexity of the application increases.
 
 - As it requires servers access, the server should be able to handle high volume or autoscale
 
+
+<!--
+- Running page logic and rendering on the server makes it possible to avoid sending lots of JavaScript to the client, which helps achieve a fast Time to Interactive (TTI).
+- it gives the author/developers of the site control over the power of the machine doing the rendering, rendering bigger VM/resource to reduce load time
+-->
 
 ---
 transition: slide-up
@@ -513,9 +535,10 @@ document.querySelector('button')
 
 <div m-12>
   <ul>
-    <li>attach event listener to button</li>
-    <li>parse response event</li>
-    <li>append new item to list</li>
+    <li>attach event listener to button, catch the click event on the button element</li>
+    <li>parse API response, if status is true</li>
+    <li>append new item to list. create list item element, append text from input</li>
+    <li>empty input, by setting value to empty string</li>
   </ul>
 </div>
 
@@ -569,7 +592,6 @@ transition: slide-up
 
 - leverage microfronteds to split code and setup different teams
 
-
 ---
 transition: slide-up
 layout: 'cover'
@@ -585,6 +607,11 @@ class: 'text-center'
      <carbon-logo-twitter /> @paul_isache
   </a>
 </div>
+
+<!--
+- take into consideration all aspects: team size, team experince, timeline, budget, project lifetime
+- if all taken into consideration, I think in some cases it would be worth it.
+-->
 
 ---
 transition: slide-up
