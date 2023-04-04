@@ -117,7 +117,7 @@ transition: slide-up
 
 <!--
 - rendering is a process used in web development that turns website code into the interactive pages users see when they visit a website
-- static rendering is similar to ssr, but it will serve static content
+- static rendering is similar to ssr, but it will serve static content. Static would mean generated HTML that is not dynamically filled
 -->
 
 ---
